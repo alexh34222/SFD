@@ -32,7 +32,7 @@ function CurrentCalls() {
   }, []);
 
   return (
-    <div>
+    <div className="main">
       <h3 className="secondaryTitle">Current Calls:</h3>
       {data.length === 0 ? (
         <p>Loading...</p>
