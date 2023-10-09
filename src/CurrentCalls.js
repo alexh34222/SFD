@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./assets/css/currentcalls.css";
 import axios from "axios";
+import { Loader } from "@googlemaps/js-api-loader";
 
 function formatDatetime(datetimeString) {
   const date = new Date(datetimeString);
@@ -18,7 +19,6 @@ function formatDatetime(datetimeString) {
 
 function CurrentCalls() {
   const [data, setData] = useState([]);
-   
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,10 +30,49 @@ function CurrentCalls() {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    const loader = new Loader({
+      apiKey: "AIzaSyD4fnStc7yOcWyT8HmF9wQ2NBFsjSRoB1I",
+      version: "weekly",
+    });
+
+    loader
+      .load()
+      .then(() => {
+        if (typeof window.google !== "undefined") {
+          const map = new window.google.maps.Map(
+            document.getElementById("map"),
+            {
+              center: { lat: 47.6062, lng: -122.3321 },
+              zoom: 12,
+            }
+          );
+
+          data.slice(0, 40).forEach((call) => {
+            new window.google.maps.Marker({
+              position: {
+                lat: parseFloat(call.latitude),
+                lng: parseFloat(call.longitude),
+              },
+              map,
+              title: call.type,
+            });
+          });
+        } else {
+          console.error("Google Maps API not loaded.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading Google Maps API:", error);
+      });
+  }, [data]);
 
   return (
     <div className="main">
       <h3 className="secondaryTitle">Current Calls:</h3>
+
+      <div id="map" height="400px" width="100%"></div>
+
       {data.length === 0 ? (
         <p>Loading...</p>
       ) : (
