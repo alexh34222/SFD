@@ -31,6 +31,13 @@ function CurrentCalls() {
     fetchData();
   }, []);
   useEffect(() => {
+    const callIcons = {
+      "Aid Response": "https://img.icons8.com/ios-filled/50/doctors-bag.png",
+      "Car Fire": "https://img.icons8.com/ios-filled/50/car-fire.png",
+      "Medic Response":
+        "https://img.icons8.com/ios-filled/50/ambulance--v1.png",
+    };
+
     const loader = new Loader({
       apiKey: "AIzaSyD4fnStc7yOcWyT8HmF9wQ2NBFsjSRoB1I",
       version: "weekly",
@@ -43,19 +50,36 @@ function CurrentCalls() {
           const map = new window.google.maps.Map(
             document.getElementById("map"),
             {
+              mapId: "a3f8bb2d24ba5bfb",
               center: { lat: 47.6062, lng: -122.3321 },
               zoom: 12,
             }
           );
 
           data.slice(0, 40).forEach((call) => {
-            new window.google.maps.Marker({
+            const iconUrl = callIcons[call.type] || null;
+            const marker = new window.google.maps.Marker({
               position: {
                 lat: parseFloat(call.latitude),
                 lng: parseFloat(call.longitude),
               },
               map,
               title: call.type,
+              icon: {
+                url: iconUrl,
+                scaledSize: new window.google.maps.Size(30, 30),
+              },
+            });
+
+            marker.addListener("click", () => {
+              const infowindow = new window.google.maps.InfoWindow({
+                content: `
+                  <h3><strong>${call.type}</strong></h3>
+                  <p>${formatDatetime(call.datetime)}</p>
+                  <p>${call.address}</p>
+                `,
+              });
+              infowindow.open(map, marker);
             });
           });
         } else {
@@ -69,7 +93,7 @@ function CurrentCalls() {
 
   return (
     <div className="main">
-      <h3 className="secondaryTitle">Current Calls:</h3>
+      <h3 className="secondaryTitle">Calls:</h3>
 
       <div id="map" height="400px" width="100%"></div>
 
