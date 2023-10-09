@@ -1,0 +1,36 @@
+.secondaryTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: #a82f2f;
+}
+
+
+.callBox {
+    background-color: #ffffff;
+    border: 1px solid #a82f2f;
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.callTitle {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: #2d1313;
+}
+
+.callText {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: #2d1313;
+}
