@@ -36,6 +36,7 @@ function CurrentCalls() {
       "Car Fire": "https://img.icons8.com/ios-filled/50/car-fire.png",
       "Medic Response":
         "https://img.icons8.com/ios-filled/50/ambulance--v1.png",
+      "Alarm Bell": "https://img.icons8.com/ios-glyphs/30/alarm.png",
     };
 
     const loader = new Loader({
@@ -46,13 +47,25 @@ function CurrentCalls() {
     loader
       .load()
       .then(() => {
+        const styles = {
+          default: [],
+          hide: [
+            {
+              featureType: "poi.business",
+              elementType: "labels.icon",
+              stylers: [{ visibility: "off" }],
+            },
+          ],
+        };
         if (typeof window.google !== "undefined") {
           const map = new window.google.maps.Map(
             document.getElementById("map"),
             {
-              mapId: "a3f8bb2d24ba5bfb",
               center: { lat: 47.6062, lng: -122.3321 },
               zoom: 12,
+              mapTypeControl: false,
+              mapTypeId: "roadmap",
+              styles: styles,
             }
           );
 
