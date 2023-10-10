@@ -69,7 +69,7 @@ function CurrentCalls() {
             }
           );
 
-          data.slice(0, 40).forEach((call) => {
+          data.slice(0, 20).forEach((call) => {
             const iconUrl = callIcons[call.type] || null;
             const marker = new window.google.maps.Marker({
               position: {
@@ -117,8 +117,8 @@ function CurrentCalls() {
       {data.length === 0 ? (
         <p>Loading...</p>
       ) : (
-        <div>
-          {data.slice(0, 40).map((call, index) => (
+        <div className="callList">
+          {data.slice(0, 20).map((call, index) => (
             <div key={index} className="callBox">
               <p className={'callText callType'}>{call ? call.type : ""}</p>
 

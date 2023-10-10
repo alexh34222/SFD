@@ -1,13 +1,6 @@
 import "./assets/css/home.css";
 import CurrentCalls from "./CurrentCalls";
 
-// Funnction for retrieving the current calls from the Seattle Fire Department
-
-// Function for displaying the current calls
-
-// function refreshPage() {
-//   window.location.reload(true);
-
 function Home() {
   const refreshPage = () => {
     window.location.reload(true);
