@@ -87,10 +87,13 @@ function CurrentCalls() {
             marker.addListener("click", () => {
               const infowindow = new window.google.maps.InfoWindow({
                 content: `
-                  <h3><strong>${call.type}</strong></h3>
-                  <p>${formatDatetime(call.datetime)}</p>
-                  <p>${call.address}</p>
-                `,
+                <h3><strong>${call.type}</strong></h3>
+                <p>${formatDatetime(call.datetime)}</p>
+                <a href="http://www.google.com/maps?q=${call ? call.address : ""}" class="callText" target="_blank" rel="noreferrer">
+                  ${call ? call.address : ""}
+                </a>
+              `,
+              
               });
               infowindow.open(map, marker);
             });
@@ -119,7 +122,16 @@ function CurrentCalls() {
               <h4 className="callTitle">
                 {call ? formatDatetime(call.datetime) : ""}
               </h4>
-              <p className="callText">{call ? call.address : ""}</p>
+              <a
+                href={`http://www.google.com/maps?q=${
+                  call ? call.address : ""
+                }`}
+                className="callText"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {call ? call.address : ""}
+              </a>
               <p className="callText">{call ? call.type : ""}</p>
             </div>
           ))}
