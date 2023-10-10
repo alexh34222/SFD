@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sfd/static/css/main.5d864986.css",
+    "main.js": "/sfd/static/js/main.ef1f1aae.js",
+    "index.html": "/sfd/index.html",
+    "main.5d864986.css.map": "/sfd/static/css/main.5d864986.css.map",
+    "main.ef1f1aae.js.map": "/sfd/static/js/main.ef1f1aae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d864986.css",
+    "static/js/main.ef1f1aae.js"
+  ]
+}
