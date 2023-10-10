@@ -89,11 +89,12 @@ function CurrentCalls() {
                 content: `
                 <h3><strong>${call.type}</strong></h3>
                 <p>${formatDatetime(call.datetime)}</p>
-                <a href="http://www.google.com/maps?q=${call ? call.address : ""}" class="callText" target="_blank" rel="noreferrer">
+                <a href="http://www.google.com/maps?q=${
+                  call ? call.address : ""
+                }" class="callText" target="_blank" rel="noreferrer">
                   ${call ? call.address : ""}
                 </a>
               `,
-              
               });
               infowindow.open(map, marker);
             });
@@ -119,20 +120,21 @@ function CurrentCalls() {
         <div>
           {data.slice(0, 40).map((call, index) => (
             <div key={index} className="callBox">
-              <h4 className="callTitle">
-                {call ? formatDatetime(call.datetime) : ""}
-              </h4>
+              <p className={'callText callType'}>{call ? call.type : ""}</p>
+
               <a
                 href={`http://www.google.com/maps?q=${
                   call ? call.address : ""
                 }`}
-                className="callText"
+                className={'callText callAddress'}
                 target="_blank"
                 rel="noreferrer"
               >
                 {call ? call.address : ""}
               </a>
-              <p className="callText">{call ? call.type : ""}</p>
+              <p className={'callText callTime'}>
+                {call ? formatDatetime(call.datetime) : ""}
+              </p>
             </div>
           ))}
         </div>

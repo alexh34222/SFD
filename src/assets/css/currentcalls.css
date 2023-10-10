@@ -13,6 +13,11 @@
 }
 
 .callBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   background-color: #ffffff;
   border: 1px solid #a82f2f;
   border-radius: 5px;
@@ -25,20 +30,31 @@
   width: 90%;
 }
 
-.callTitle {
+/* .callTitle {
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 0.5em;
-  text-align: center;
+
   color: #2d1313;
-}
+  width: 100%;
+} */
 
 .callText {
   font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  text-align: center;
+
   color: #2d1313;
+}
+
+.callType {
+  font-size: 1.1rem;
+  width: 33%;
+}
+
+.callAddress {
+ width: 33%;
+}
+
+.callDate {
+  width: 33%;
 }
 
 button {
