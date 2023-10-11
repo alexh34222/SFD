@@ -14,7 +14,7 @@ function Home() {
           *THIS SITE IS NOT AFFILIATED WITH SEATTLE FIRE DEPARTMENT OR THE CITY
           OF SEATTLE, IT WAS CREATED BY A THIRD PARTY* <br></br>
           <br></br>
-          *TO UPDATE THE CALL LIST, PLEASE REFRESH THE PAGE*
+          *TO UPDATE THE CALL LIST, PLEASE REFRESH THE PAGE - We are looking into making both past and current calls show differently as we are limited by our API access. Updates coming soon!*
         </p>
         <button onClick={refreshPage}>Refresh Page</button>
       </div>

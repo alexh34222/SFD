@@ -26,21 +26,21 @@ function CurrentCalls() {
         "https://data.seattle.gov/resource/grwu-wqtk.json"
       );
       setData(result.data);
-      console.log(result.data);
     };
     fetchData();
   }, []);
   useEffect(() => {
-    const callIcons = {
-      "Aid Response": 'https://img.icons8.com/ios-filled/50/doctors-bag.png',
-      "MVI Medic": 'https://img.icons8.com/ios-filled/50/car-fire.png',
-      "Medic Response":
-        'https://img.icons8.com/ios-filled/50/ambulance--v1.png',
-      "Alarm Bell": 'https://img.icons8.com/ios-glyphs/30/alarm.png',
-    };
+    // const callIcons = {
+    //   "Aid Response": 'https://img.icons8.com/ios-filled/50/doctors-bag.png',
+    //   "MVI Medic": 'https://img.icons8.com/ios-filled/50/car-fire.png',
+    //   "Medic Response":
+    //     'https://img.icons8.com/ios-filled/50/ambulance--v1.png',
+    //   "Alarm Bell": 'https://img.icons8.com/ios-glyphs/30/alarm.png',
+    // };
 
     const loader = new Loader({
-      apiKey: "AIzaSyD4fnStc7yOcWyT8HmF9wQ2NBFsjSRoB1I",
+      apiKey: process.env.REACT_APP_API_KEY,
+
       version: "weekly",
     });
 
@@ -70,7 +70,7 @@ function CurrentCalls() {
           );
 
           data.slice(0, 20).forEach((call) => {
-            const iconUrl = callIcons[call.type] || null;
+            // const iconUrl = callIcons[call.type] || null;
             const marker = new window.google.maps.Marker({
               position: {
                 lat: parseFloat(call.latitude),
@@ -78,10 +78,10 @@ function CurrentCalls() {
               },
               map,
               title: call.type,
-              icon: {
-                url: iconUrl,
-                scaledSize: new window.google.maps.Size(30, 30),
-              },
+              // icon: {
+              //   url: iconUrl,
+              //   scaledSize: new window.google.maps.Size(30, 30),
+              // },
             });
 
             marker.addListener("click", () => {
@@ -120,19 +120,19 @@ function CurrentCalls() {
         <div className="callList">
           {data.slice(0, 20).map((call, index) => (
             <div key={index} className="callBox">
-              <p className={'callText callType'}>{call ? call.type : ""}</p>
+              <p className={"callText callType"}>{call ? call.type : ""}</p>
 
               <a
                 href={`http://www.google.com/maps?q=${
                   call ? call.address : ""
                 }`}
-                className={'callText callAddress'}
+                className={"callText callAddress"}
                 target="_blank"
                 rel="noreferrer"
               >
                 {call ? call.address : ""}
               </a>
-              <p className={'callText callTime'}>
+              <p className={"callText callTime"}>
                 {call ? formatDatetime(call.datetime) : ""}
               </p>
             </div>
