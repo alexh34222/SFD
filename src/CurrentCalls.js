@@ -23,7 +23,7 @@ function CurrentCalls() {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        "https://data.seattle.gov/resource/fire-911.json"
+        "https://data.seattle.gov/resource/grwu-wqtk.json"
       );
       setData(result.data);
       console.log(result.data);
